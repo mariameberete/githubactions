@@ -44,5 +44,4 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4 
-
-      -run: echo "Job on ubuntu 22.04"         
+      - run: echo "Job on ubuntu 22.04"         
