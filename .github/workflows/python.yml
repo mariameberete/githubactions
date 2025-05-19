@@ -1,15 +1,19 @@
-name: Run Azure Login with user-assigned managed identity
+name: Python Workflow
+
 on:
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
 jobs:
   pythoncommands:
-    runs-on: [ubuntu-latest] # Specify the label of your self-hosted runner here
+    permissions:
+      id-token: write # Require write permission to Fetch an OIDC token.
+
+    runs-on: ubuntu-latest
+
     steps:
     - name: Azure login
       uses: azure/login@v2
       with:
-        auth-type: IDENTITY
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
